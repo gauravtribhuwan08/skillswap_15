@@ -41,7 +41,7 @@ const SkillMatchingPage = () => {
 
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/matches",
+          `${import.meta.env.VITE_API_BASE_URL}/api/matches`,
           { headers: { "x-auth-token": token } }
         );
 
@@ -51,7 +51,7 @@ const SkillMatchingPage = () => {
         const ratingPromises = response.data.map(async (match) => {
           try {
             const res = await axios.get(
-              `http://localhost:5000/api/sessions/ratings/${match.user._id}`,
+              `${import.meta.env.VITE_API_BASE_URL}/api/sessions/ratings/${match.user._id}`,
               { headers: { "x-auth-token": token } }
             );
             return { id: match.user._id, rating: res.data.averageRating };
@@ -77,7 +77,7 @@ const SkillMatchingPage = () => {
       const token = localStorage.getItem("token");
       try {
         const responseAll = await axios.get(
-          "http://localhost:5000/api/matches/all",
+          `${import.meta.env.VITE_API_BASE_URL}/api/matches/all`,
           { headers: { "x-auth-token": token } }
         );
         setAllUsers(responseAll.data);
@@ -143,7 +143,7 @@ const SkillMatchingPage = () => {
 
     try {
       await axios.post(
-        "http://localhost:5000/api/sessions/request",
+        `${import.meta.env.VITE_API_BASE_URL}/api/sessions/request`,
         { userId2: userId, sessionDate: date, sessionTime: time, skill },
         { headers: { "x-auth-token": token } }
       );
@@ -233,7 +233,7 @@ const SkillMatchingPage = () => {
                     <img
                       src={
                         match.user?.profilePicture
-                          ? `http://localhost:5000/uploads/profile-pictures/${match.user.profilePicture}`
+                          ? `${import.meta.env.VITE_API_BASE_URL}/uploads/profile-pictures/${match.user.profilePicture}`
                           : "/default-avatar.png"
                       }
                       alt="profile"

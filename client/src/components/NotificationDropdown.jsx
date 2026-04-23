@@ -16,7 +16,7 @@ const NotificationDropdown = () => {
 
     // Persist the update to the backend
     const token = localStorage.getItem('token');
-    axios.patch(`http://localhost:5000/api/notifications/${id}/read`, {}, {
+    axios.patch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications/${id}/read`, {}, {
       headers: { 'x-auth-token': token },
     }).catch((err) => {
       console.error('Error updating read status in backend:', err.message);
@@ -29,7 +29,7 @@ const NotificationDropdown = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/sessions/accept', 
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/sessions/accept`, 
         { sessionId: notification.relatedId },
         { headers: { 'x-auth-token': token } }
       );
@@ -46,7 +46,7 @@ const NotificationDropdown = () => {
     
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/sessions/reject', 
+      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/sessions/reject`, 
         { sessionId: notification.relatedId },
         { headers: { 'x-auth-token': token } }
       );
@@ -64,7 +64,7 @@ const NotificationDropdown = () => {
 
         // Persist the change to the backend
         const token = localStorage.getItem('token');
-        axios.patch(`http://localhost:5000/api/notifications/${notification._id}/read`, {}, {
+        axios.patch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications/${notification._id}/read`, {}, {
           headers: { 'x-auth-token': token },
         }).catch((err) => {
           console.error('Error marking all notifications as read:', err.message);

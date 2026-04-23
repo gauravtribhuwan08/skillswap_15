@@ -15,7 +15,7 @@ const NotificationBell = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
-    const socket = io('http://localhost:5000/notifications');
+    const socket = io(`${import.meta.env.VITE_API_BASE_URL}/notifications`);
     
     socket.on('connect', () => {
       const userStr = localStorage.getItem('user');

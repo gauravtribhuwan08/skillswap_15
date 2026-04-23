@@ -5,7 +5,7 @@ import axios from 'axios';
 
 // ── 1) Create an Axios instance pointed at your backend ─────────────
 const API = axios.create({
-  baseURL: 'http://localhost:5000',  // ← ensure your Express server is here
+  baseURL: import.meta.env.VITE_API_BASE_URL,  // ← ensure your Express server is here
 });
 
 // ── 2) Attach JWT & Log every request/response ──────────────────────

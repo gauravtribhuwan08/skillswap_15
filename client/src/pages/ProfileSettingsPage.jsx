@@ -42,7 +42,7 @@ const ProfileSettingsPage = () => {
       const token = localStorage.getItem('token');
       try {
         const res = await axios.get(
-          'http://localhost:5000/api/users/profile',
+          `${import.meta.env.VITE_API_BASE_URL}/api/users/profile`,
           { headers: { 'x-auth-token': token } }
         );
         const data = res.data;
@@ -57,7 +57,7 @@ const ProfileSettingsPage = () => {
         });
         if (data.profilePicture) {
           setImagePreview(
-            `http://localhost:5000/uploads/profile-pictures/${data.profilePicture}`
+            `${import.meta.env.VITE_API_BASE_URL}/uploads/profile-pictures/${data.profilePicture}`
           );
         }
       } catch {
@@ -71,7 +71,7 @@ const ProfileSettingsPage = () => {
   const avatarSrc = imagePreview
     ? imagePreview
     : formData.profilePicture
-    ? `http://localhost:5000/uploads/profile-pictures/${formData.profilePicture}`
+    ? `${import.meta.env.VITE_API_BASE_URL}/uploads/profile-pictures/${formData.profilePicture}`
     : defaultAvatar;
 
   // Handle profile update
@@ -109,7 +109,7 @@ const handleUpdate = async () => {
 
   try {
     const token = localStorage.getItem('token');
-    const res = await axios.put('http://localhost:5000/api/users/profile', payload, {
+    const res = await axios.put(`${import.meta.env.VITE_API_BASE_URL}/api/users/profile`, payload, {
       headers: {
         'x-auth-token': token,
         'Content-Type': 'multipart/form-data',
@@ -131,7 +131,7 @@ const handleUpdate = async () => {
     try {
       const token = localStorage.getItem('token');
       await axios.put(
-        'http://localhost:5000/api/users/change-password',
+        `${import.meta.env.VITE_API_BASE_URL}/api/users/change-password`,
         {
           currentPassword: passwords.currentPassword,
           newPassword: passwords.newPassword
@@ -343,7 +343,7 @@ const handleUpdate = async () => {
               )}
               {formData.certificate && typeof formData.certificate === 'string' && !certFileName && (
                 <p className="mt-2 text-sm text-blue-600">
-                  <a href={`http://localhost:5000/uploads/profile-pictures/${formData.certificate}`} target="_blank" rel="noopener noreferrer">
+                  <a href={`${import.meta.env.VITE_API_BASE_URL}/uploads/profile-pictures/${formData.certificate}`} target="_blank" rel="noopener noreferrer">
                     View Current Certificate
                   </a>
                 </p>

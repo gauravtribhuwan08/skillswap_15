@@ -21,7 +21,7 @@ const AdminDashboardPage = () => {
   const profileImage = user?.profilePicture
     ? user.profilePicture.startsWith('http')
       ? user.profilePicture
-      : `http://localhost:5000/uploads/${user.profilePicture}`
+      : `${import.meta.env.VITE_API_BASE_URL}/uploads/${user.profilePicture}`
     : 'https://placehold.co/150x150?text=Admin';
 
   return (

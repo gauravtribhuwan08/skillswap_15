@@ -32,7 +32,7 @@ const UserCard = React.memo(({ user, rank }) => {
   const pictureUrl = useMemo(
     () =>
       profilePicture
-        ? `http://localhost:5000/uploads/profile-pictures/${profilePicture}`
+        ? `${import.meta.env.VITE_API_BASE_URL}/uploads/profile-pictures/${profilePicture}`
         : defaultAvatar,
     [profilePicture]
   );

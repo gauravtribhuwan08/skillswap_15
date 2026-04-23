@@ -40,7 +40,7 @@ const ChatPage = () => {
     const fetchConnections = async () => {
       const token = localStorage.getItem('token');
       try {
-        const response = await axios.get('http://localhost:5000/api/sessions/accepted', {
+        const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/sessions/accepted`, {
           headers: { 'x-auth-token': token },
         });
         setConnections(response.data);
@@ -67,7 +67,7 @@ const ChatPage = () => {
       return;
     }
 
-    const socketIo = io('http://localhost:5000/sessions', {
+    const socketIo = io(`${import.meta.env.VITE_API_BASE_URL}/sessions`, {
       transports: ['websocket'],
       query: { sessionId },
     });
@@ -108,7 +108,7 @@ const ChatPage = () => {
 
   // Set up the **Notification Socket.io connection** (separate from the chat socket)
   useEffect(() => {
-    const socketIoNotification = io('http://localhost:5000/notifications', {
+    const socketIoNotification = io(`${import.meta.env.VITE_API_BASE_URL}/notifications`, {
       transports: ['websocket'],
     });
 
@@ -133,7 +133,7 @@ const ChatPage = () => {
       const fetchMessages = async () => {
         const token = localStorage.getItem('token');
         try {
-          const response = await axios.get(`http://localhost:5000/api/sessions/message/${selectedConnection._id}`, {
+          const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/sessions/message/${selectedConnection._id}`, {
             headers: { 'x-auth-token': token },
           });
 
@@ -196,7 +196,7 @@ const ChatPage = () => {
     });
 
     // Store the message in the backend
-    axios.post('http://localhost:5000/api/sessions/message', formData, {
+    axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/sessions/message`, formData, {
       headers: { 'x-auth-token': token },
     })
       .then((response) => {
@@ -232,7 +232,7 @@ const ChatPage = () => {
     const token = localStorage.getItem('token');
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/sessions/schedule',
+        `${import.meta.env.VITE_API_BASE_URL}/api/sessions/schedule`,
         {
           sessionId,
           newMeetingDate: scheduledDate,
@@ -264,7 +264,7 @@ const ChatPage = () => {
       console.log(`Marking session as ${status}`);
 
       await axios.post(
-        'http://localhost:5000/api/sessions/mark-session',
+        `${import.meta.env.VITE_API_BASE_URL}/api/sessions/mark-session`,
         {
           sessionId,
           status,
@@ -281,7 +281,7 @@ const ChatPage = () => {
 
       setIsFeedbackModalOpen(false); // Close feedback modal after submission
       // Refresh session data to update the status
-      const updatedSession = await axios.get('http://localhost:5000/api/sessions/accepted', {
+      const updatedSession = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/sessions/accepted`, {
         headers: {
           'x-auth-token': token, // Pass token for the session data request as well
         },
@@ -342,7 +342,7 @@ const ChatPage = () => {
     const token = localStorage.getItem('token');
 
     try {
-      const response = await axios.post('http://localhost:5000/api/reports', formData, {
+      const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/reports`, formData, {
         headers: { 'x-auth-token': token },
       });
 

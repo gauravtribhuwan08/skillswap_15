@@ -60,8 +60,8 @@ const ProfilePage = () => {
       if (!token) return;
       try {
         const url = userId 
-          ? `http://localhost:5000/api/users/profile/${userId}`
-          : "http://localhost:5000/api/users/profile";
+          ? `${import.meta.env.VITE_API_BASE_URL}/api/users/profile/${userId}`
+          : `${import.meta.env.VITE_API_BASE_URL}/api/users/profile`;
           
         const { data } = await axios.get(url, { 
           headers: { "x-auth-token": token } 
@@ -71,7 +71,7 @@ const ProfilePage = () => {
         setSkillsToLearn(data.skillsToLearn);
 
         const notifRes = await axios.get(
-          `http://localhost:5000/api/notifications/${data._id}`,
+          `${import.meta.env.VITE_API_BASE_URL}/api/notifications/${data._id}`,
           { headers: { "x-auth-token": token } }
         );
         dispatch(setNotifications(notifRes.data));
@@ -91,16 +91,16 @@ const ProfilePage = () => {
       if (!token) return;
       try {
         const [p, a, co, c] = await Promise.all([
-          axios.get("http://localhost:5000/api/sessions/pending", {
+          axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/sessions/pending`, {
             headers: { "x-auth-token": token },
           }),
-          axios.get("http://localhost:5000/api/sessions/acceptedOnly", {
+          axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/sessions/acceptedOnly`, {
             headers: { "x-auth-token": token },
           }),
-          axios.get("http://localhost:5000/api/sessions/completed", {
+          axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/sessions/completed`, {
             headers: { "x-auth-token": token },
           }),
-          axios.get("http://localhost:5000/api/sessions/canceled", {
+          axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/sessions/canceled`, {
             headers: { "x-auth-token": token },
           }),
         ]);
@@ -138,7 +138,7 @@ const ProfilePage = () => {
     const token = localStorage.getItem("token");
     try {
       const { data } = await axios.put(
-        "http://localhost:5000/api/users/profile",
+        `${import.meta.env.VITE_API_BASE_URL}/api/users/profile`,
         {
           name: user.name, // Ensure `name` is sent in the request
           status: user.status,
@@ -163,7 +163,7 @@ const ProfilePage = () => {
     const token = localStorage.getItem("token");
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/sessions/accept",
+        `${import.meta.env.VITE_API_BASE_URL}/api/sessions/accept`,
         { sessionId: id },
         { headers: { "x-auth-token": token } }
       );
@@ -216,7 +216,7 @@ const ProfilePage = () => {
                 <img
                   src={
                     user?.profilePicture
-                      ? `http://localhost:5000/uploads/profile-pictures/${user.profilePicture}`
+                      ? `${import.meta.env.VITE_API_BASE_URL}/uploads/profile-pictures/${user.profilePicture}`
                       : defaultAvatar
                   }
                   alt="Profile"
@@ -279,7 +279,7 @@ const ProfilePage = () => {
                 {/* Certificate link for public viewing */}
                 {!isOwnProfile && user?.certificate && (
                   <p className="mt-2 text-sm text-blue-600 font-semibold mb-2">
-                    <a href={`http://localhost:5000/uploads/profile-pictures/${user.certificate}`} target="_blank" rel="noopener noreferrer">
+                    <a href={`${import.meta.env.VITE_API_BASE_URL}/uploads/profile-pictures/${user.certificate}`} target="_blank" rel="noopener noreferrer">
                       📄 View User's Certificate
                     </a>
                   </p>

@@ -112,12 +112,12 @@ const ReportManagement = () => {
                 <div>
                   <span className="font-bold">Screenshot:</span>
                   <a
-                    href={`http://localhost:5000${r.screenshot}`}
+                    href={`${import.meta.env.VITE_API_BASE_URL}${r.screenshot}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <img
-                      src={`http://localhost:5000${r.screenshot}`}
+                      src={`${import.meta.env.VITE_API_BASE_URL}${r.screenshot}`}
                       alt="Report screenshot"
                       className="mt-2 w-32 h-32 object-cover rounded border-2 border-white shadow"
                     />

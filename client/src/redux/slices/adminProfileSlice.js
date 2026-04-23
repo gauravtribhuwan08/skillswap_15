@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // Axios instance pointing at admin endpoints
-const API = axios.create({ baseURL: 'http://localhost:5000/api/admin' });
+const API = axios.create({ baseURL: `${import.meta.env.VITE_API_BASE_URL}/api/admin` });
 API.interceptors.request.use(config => {
   const token = localStorage.getItem('token');
   if (token) config.headers['x-auth-token'] = token;
