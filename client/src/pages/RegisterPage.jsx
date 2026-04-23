@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { FiUser, FiMail, FiLock } from "react-icons/fi";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import registerImage from "../assets/bg-img.webp"; // Use same image as login
@@ -193,9 +194,9 @@ const RegisterPage = () => {
             <div className="text-center mt-2">
               <p className="text-white">
                 Already have an account?{" "}
-                <a href="/login" className="underline hover:text-gray-200">
+                <Link to="/login" className="underline hover:text-gray-200">
                   Login here
-                </a>
+                </Link>
               </p>
             </div>
           </form>

@@ -6,7 +6,7 @@ import {
   loginFailure,
 } from "../redux/slices/authSlice";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import loginImage from "../assets/bg-img.webp";
 import { FiMail, FiLock } from "react-icons/fi";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
@@ -168,9 +168,9 @@ const LoginPage = () => {
           <div className="text-center mt-4">
             <p className="text-sm sm:text-base md:text-lg text-white">
               Don't have an account?{" "}
-              <a href="/register" className="underline hover:text-gray-200">
+              <Link to="/register" className="underline hover:text-gray-200">
                 Register here
-              </a>
+              </Link>
             </p>
           </div>
         </div>
