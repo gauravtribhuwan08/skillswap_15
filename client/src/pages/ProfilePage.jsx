@@ -188,8 +188,8 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen relative">
-      <Background />
+    <div className="min-h-screen relative bg-slate-900">
+      {/* <Background /> */}
       <div className="relative z-10">
         <Navbar />
         {/* Profile and Notification Section */}
