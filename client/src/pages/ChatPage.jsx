@@ -442,7 +442,7 @@ const ChatPage = () => {
                       className={`p-4 rounded-lg shadow-lg cursor-pointer 
           ${isSelected
                           ? 'bg-blue-600/80 border border-white/50 shadow-lg backdrop-blur-md'
-                          : 'bg-white/5 border border-transparent hover:bg-white/10 hover:border-white/20'}`}'
+                          : 'bg-white/5 border border-transparent hover:bg-white/10 hover:border-white/20'}`
                       onClick={() => handleSelectConnection(connection)}
                     >
                       <p className="font-semibold text-white">{getOtherUserName(connection)}</p>
@@ -454,7 +454,6 @@ const ChatPage = () => {
               ) : (
                 <p className="text-white">No connections available.</p>
               )}
-
             </div>
           </div>
           {/* Right Panel: Chat with Selected Connection */}
