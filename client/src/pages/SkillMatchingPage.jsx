@@ -226,7 +226,7 @@ const SkillMatchingPage = () => {
               filteredMatches.map((match) => (
                 <div
                   key={match.user._id}
-                  className="bg-white rounded-2xl shadow-lg p-6"
+                  className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-xl p-6 text-white"
                 >
                   {/* Profile */}
                   <div className="flex items-center gap-4 mb-4">
@@ -247,7 +247,7 @@ const SkillMatchingPage = () => {
                       <h3 className="font-bold text-lg">
                         {match.user.name}
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-gray-300">
                         {match.user.email}
                       </p>
                       <p className="text-yellow-500 font-semibold">
@@ -256,18 +256,18 @@ const SkillMatchingPage = () => {
                     </div>
                   </div>
 
-                  <p className="font-semibold text-blue-600 mb-1">
+                  <p className="font-semibold text-blue-400 mb-1">
                     Teaches: {match.teachSkill}
                   </p>
                   {showExplore && match.learnSkill && (
-                    <p className="font-semibold text-green-600 mb-3">
+                    <p className="font-semibold text-green-400 mb-3">
                       Wants to Learn: {match.learnSkill}
                     </p>
                   )}
 
                   <input
                     type="date"
-                    className="w-full mb-2 p-2 border rounded"
+                    className="w-full mb-2 p-2 !bg-white/10 text-white border border-white/30 rounded focus:ring-2 focus:ring-blue-500 outline-none"
                     onChange={(e) =>
                       setSessionDetails((prev) => ({
                         ...prev,
@@ -281,7 +281,7 @@ const SkillMatchingPage = () => {
 
                   <input
                     type="time"
-                    className="w-full mb-3 p-2 border rounded"
+                    className="w-full mb-3 p-2 !bg-white/10 text-white border border-white/30 rounded focus:ring-2 focus:ring-blue-500 outline-none"
                     onChange={(e) =>
                       setSessionDetails((prev) => ({
                         ...prev,
@@ -307,7 +307,7 @@ const SkillMatchingPage = () => {
                       onClick={() =>
                         navigate(`/profile/${match.user._id}`)
                       }
-                      className="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 rounded-lg transition font-semibold"
+                      className="w-full bg-white/10 hover:bg-white/20 border border-white/30 text-white py-2 rounded-lg transition font-semibold"
                     >
                       <FaUser className="inline mr-2 text-gray-600" />
                       View Profile

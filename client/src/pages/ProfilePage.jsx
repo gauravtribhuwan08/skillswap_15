@@ -188,15 +188,15 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="min-h-screen relative bg-slate-900">
-      {/* <Background /> */}
+    <div className="min-h-screen relative">
+      <Background />
       <div className="relative z-10">
         <Navbar />
         {/* Profile and Notification Section */}
         <div className="px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start max-w-7xl mx-auto p-4 md:p-8 space-y-6 md:space-y-0">
             {/* Left Profile Card */}
-            <div className="relative bg-gradient-to-br from-blue-400 via-blue-300 to-blue-200 rounded-xl shadow-lg p-4 md:p-6 min-h-[10rem] md:min-h-[12rem] flex flex-col md:flex-row items-center space-x-0 md:space-x-6 w-full h-auto md:h-60 transition hover:shadow-2xl md:mr-4 transition-shadow duration-300 self-start">
+            <div className="relative bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] p-4 md:p-6 min-h-[10rem] md:min-h-[12rem] flex flex-col md:flex-row items-center space-x-0 md:space-x-6 w-full h-auto md:h-60 transition hover:bg-white/20 md:mr-4 transition-all duration-300 self-start text-white">
               {/* Controls: Notifications + Edit */}
               <div className="absolute top-4 right-4 flex items-center space-x-2">
                 {isOwnProfile && <NotificationBell />}
@@ -405,9 +405,9 @@ const ProfilePage = () => {
 
             <div className={`grid grid-cols-1 ${isOwnProfile ? 'md:grid-cols-2' : ''} gap-6 md:gap-8`}>
               {/* Skills Card */}
-              <div className="bg-gradient-to-br from-blue-400 via-blue-300 to-blue-200 rounded-lg shadow-lg p-4 md:p-6 h-80 md:h-96 overflow-y-auto hover:shadow-2xl transition-shadow duration-300">
+              <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] p-4 md:p-6 h-80 md:h-96 overflow-y-auto hover:bg-white/20 transition-all duration-300 text-white">
                 <div className="flex justify-between items-center mb-4 md:mb-6">
-                  <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 text-left">
+                  <h2 className="text-2xl md:text-3xl font-semibold text-white text-left">
                     Skills
                   </h2>
                   {isOwnProfile && (
@@ -421,7 +421,7 @@ const ProfilePage = () => {
                 </div>
 
                 <div className="mb-4">
-                  <p className="text-xl md:text-2xl font-medium text-gray-700 mb-2 text-left">
+                  <p className="text-xl md:text-2xl font-medium text-gray-200 mb-2 text-left">
                     Skills You Can Teach:
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -433,7 +433,7 @@ const ProfilePage = () => {
                         .map((s, i) => (
                           <span
                             key={i}
-                            className="bg-blue-200 text-blue-800 text-sm md:text-lg font-medium rounded-full px-3 py-1 md:px-5 md:py-2 hover:bg-blue-300 transition"
+                            className="bg-blue-500/30 text-blue-100 border border-blue-400/30 text-sm md:text-lg font-medium rounded-full px-3 py-1 md:px-5 md:py-2 hover:bg-blue-500/50 transition"
                           >
                             {s}
                           </span>
@@ -446,7 +446,7 @@ const ProfilePage = () => {
                   </div>
                 </div>
                 <div>
-                  <p className="text-xl md:text-2xl font-medium text-gray-700 mb-2 text-left">
+                  <p className="text-xl md:text-2xl font-medium text-gray-200 mb-2 text-left">
                     Skills You Want to Learn:
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -458,7 +458,7 @@ const ProfilePage = () => {
                         .map((s, i) => (
                           <span
                             key={i}
-                            className="bg-green-200 text-green-800 text-sm md:text-lg font-medium rounded-full px-3 py-1 md:px-5 md:py-2 hover:bg-green-300 transition"
+                            className="bg-green-500/30 text-green-100 border border-green-400/30 text-sm md:text-lg font-medium rounded-full px-3 py-1 md:px-5 md:py-2 hover:bg-green-500/50 transition"
                           >
                             {s}
                           </span>
@@ -474,8 +474,8 @@ const ProfilePage = () => {
 
               {/* Sessions Card */}
               {isOwnProfile && (
-                <div className="bg-gradient-to-br from-blue-400 via-blue-300 to-blue-200 rounded-lg shadow-lg p-4 md:p-6 h-80 md:h-96 flex flex-col hover:shadow-2xl transition-shadow duration-300">
-                  <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4 md:mb-6 text-left">
+                <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-lg shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] p-4 md:p-6 h-80 md:h-96 flex flex-col hover:bg-white/20 transition-all duration-300 text-white">
+                  <h2 className="text-2xl md:text-3xl font-semibold text-white mb-4 md:mb-6 text-left">
                     Your Sessions
                   </h2>
 
@@ -485,7 +485,7 @@ const ProfilePage = () => {
                     className={`px-3 py-1 md:px-4 md:py-2 rounded-lg font-medium text-sm md:text-base transition ${
                       activeTab === "pending"
                         ? "bg-blue-600 text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        : "bg-white/10 text-gray-200 hover:bg-white/20"
                     }`}
                   >
                     Pending
@@ -495,7 +495,7 @@ const ProfilePage = () => {
                     className={`px-3 py-1 md:px-4 md:py-2 rounded-lg font-medium text-sm md:text-base transition ${
                       activeTab === "upcoming"
                         ? "bg-blue-600 text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        : "bg-white/10 text-gray-200 hover:bg-white/20"
                     }`}
                   >
                     Upcoming
@@ -505,7 +505,7 @@ const ProfilePage = () => {
                     className={`px-3 py-1 md:px-4 md:py-2 rounded-lg font-medium text-sm md:text-base transition ${
                       activeTab === "completed"
                         ? "bg-blue-600 text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        : "bg-white/10 text-gray-200 hover:bg-white/20"
                     }`}
                   >
                     Completed
@@ -515,7 +515,7 @@ const ProfilePage = () => {
                     className={`px-3 py-1 md:px-4 md:py-2 rounded-lg font-medium text-sm md:text-base transition ${
                       activeTab === "canceled"
                         ? "bg-blue-600 text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        : "bg-white/10 text-gray-200 hover:bg-white/20"
                     }`}
                   >
                     Canceled
@@ -542,11 +542,11 @@ const ProfilePage = () => {
                     ).map((s) => (
                       <div
                         key={s._id}
-                        className="bg-white ring-1 ring-gray-100 rounded-lg shadow p-3 md:p-4 hover:shadow-md hover:-translate-y-0.5 transition"
+                        className="bg-white/5 border border-white/10 rounded-lg shadow p-3 md:p-4 hover:bg-white/10 hover:-translate-y-0.5 transition"
                       >
                         <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2 gap-2">
                           <div className="flex items-center space-x-2">
-                            <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 text-xs md:text-sm font-semibold">
+                            <div className="h-6 w-6 md:h-8 md:w-8 rounded-full bg-white/20 flex items-center justify-center text-white text-xs md:text-sm font-semibold">
                               {s.userId1?.name
                                 ? s.userId1.name
                                     .split(" ")
@@ -555,19 +555,19 @@ const ProfilePage = () => {
                                     .toUpperCase()
                                 : "U"}
                             </div>
-                            <span className="text-sm md:text-base font-semibold text-gray-800">
+                            <span className="text-sm md:text-base font-semibold text-white">
                               {getSessionPartnerName(s, user._id)}
                             </span>
                           </div>
-                          <p className="text-xs md:text-sm text-gray-600">
+                          <p className="text-xs md:text-sm text-gray-300">
                             {s.skill}
                           </p>
-                          <span className="text-xs md:text-sm text-gray-500">
+                          <span className="text-xs md:text-sm text-gray-400">
                             {formatDate(s.sessionDate)}
                           </span>
                         </div>
 
-                        <div className="flex flex-col md:flex-row md:items-center md:space-x-4 text-gray-600 mb-3 text-xs md:text-sm gap-2">
+                        <div className="flex flex-col md:flex-row md:items-center md:space-x-4 text-gray-300 mb-3 text-xs md:text-sm gap-2">
                           <div className="flex items-center space-x-1">
                             <FiCalendar size={12} className="md:w-4 md:h-4" />
                             <span>{formatDate(s.sessionDate)}</span>
@@ -599,7 +599,7 @@ const ProfilePage = () => {
                       </div>
                     ))
                   ) : (
-                    <p className="text-gray-500 text-center text-sm md:text-base">
+                    <p className="text-gray-400 text-center text-sm md:text-base">
                       {activeTab === "pending"
                         ? "No pending sessions."
                         : activeTab === "upcoming"

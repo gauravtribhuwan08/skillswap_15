@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import "./Background.css";
 
 const colors = [
-  ["from-white/70", "to-blue-100"],
-  ["from-white/80", "to-sky-100"],
-  ["from-blue-50", "to-white/60"],
-  ["from-sky-100", "to-blue-100"],
-  ["from-cyan-100", "to-blue-50"],
-  ["from-blue-100", "to-blue-200"],
-  ["from-white/60", "to-cyan-100"],
+  ["from-purple-500/20", "to-blue-500/20"],
+  ["from-cyan-500/20", "to-blue-600/20"],
+  ["from-indigo-500/20", "to-purple-600/20"],
+  ["from-violet-500/20", "to-fuchsia-500/20"],
+  ["from-blue-600/20", "to-cyan-600/20"],
+  ["from-fuchsia-500/20", "to-pink-500/20"],
+  ["from-sky-500/20", "to-indigo-500/20"],
 ];
 
 const depths = [
@@ -49,8 +49,8 @@ const Background = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-blue-500 to-blue-600">
-      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.04),_transparent)] mix-blend-overlay" />
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-slate-950">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.02),_transparent)] mix-blend-overlay" />
 
       {circles.map((circle, index) => (
         <div

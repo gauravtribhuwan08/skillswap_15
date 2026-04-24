@@ -428,7 +428,7 @@ const ChatPage = () => {
             ☰
           </button>
           {/* Left Panel: List of Connections */}
-          <div className={`left-panel fixed z-40 top-0 bottom-0 left-0 w-3/4 sm:w-2/4 md:w-1/4  min-h-screen p-6 bg-white/10 backdrop-blur-md shadow-xl border border-white/20 transform transition-transform duration-300 ease-in-out 
+          <div className={`left-panel fixed z-40 top-0 bottom-0 left-0 w-3/4 sm:w-2/4 md:w-1/4  min-h-screen p-6 bg-white/5 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] border-r border-white/10 transform transition-transform duration-300 ease-in-out 
   ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 md:static md:block`}>
 
             <h2 className="text-2xl font-semibold text-gray-800">Connections</h2>
@@ -441,8 +441,8 @@ const ChatPage = () => {
                       key={connection._id}
                       className={`p-4 rounded-lg shadow-lg cursor-pointer 
           ${isSelected
-                          ? 'bg-blue-600 border-2 border-white'
-                          : 'bg-gradient-to-br from-blue-400 via-blue-300 to-blue-200 hover:bg-indigo-100'}`}
+                          ? 'bg-blue-600/80 border border-white/50 shadow-lg backdrop-blur-md'
+                          : 'bg-white/5 border border-transparent hover:bg-white/10 hover:border-white/20'}`}'
                       onClick={() => handleSelectConnection(connection)}
                     >
                       <p className="font-semibold text-white">{getOtherUserName(connection)}</p>
@@ -458,21 +458,21 @@ const ChatPage = () => {
             </div>
           </div>
           {/* Right Panel: Chat with Selected Connection */}
-          <div className="chat-container w-3/4 min-h-screen p-2 bg-white/10 backdrop-blur-md rounded-xl shadow-xl border border-white/20">
+          <div className="chat-container w-3/4 min-h-screen p-2 md:p-6 bg-white/10 backdrop-blur-xl rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] border border-white/20 m-4">
 
 
             {selectedConnection && (
               <>
-                <h2 className="text-3xl font-semibold mb-4 text-gray-800">
+                <h2 className="text-3xl font-semibold mb-2 text-white">
                   Chat with {getChatUserName()}
                 </h2>
                 <p className="text-white">Skill: {selectedConnection.skill || 'Eclipse OCL'}</p>
-                <div className="messages-container bg-gradient-to-br from-blue-400 via-blue-300 to-blue-200  p-4 rounded-lg shadow-lg mb-6 max-h-96 overflow-auto">
+                <div className="messages-container bg-white/5 backdrop-blur-md border border-white/10 p-4 rounded-xl shadow-inner mb-6 max-h-96 overflow-auto">
                   {messages.length > 0 ? (
                     messages.map((msg, index) => (
                       <div
                         key={index}
-                        className="message mb-4 p-4 bg-white via-blue-400 to-blue-300 rounded-lg text-left bg-blue-600 text-grey-700 ">
+                        className="message mb-4 p-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 text-white shadow-md text-left">
                         {msg.senderId && msg.senderId._id === loggedInUser._id}
 
                         <p>
@@ -493,11 +493,11 @@ const ChatPage = () => {
 
                 {/* Feedback Display if session is completed or canceled */}
                 {isSessionCompletedOrCanceled && (
-                  <div className="feedback-display bg-gradient-to-br from-blue-400 via-blue-300 to-blue-200 p-4 rounded-lg shadow-lg mb-6">
-                    <h3 className="font-semibold text-gray-800">Feedback from User 1:</h3>
+                  <div className="feedback-display bg-white/10 backdrop-blur-md border border-white/20 text-white p-4 rounded-xl shadow-lg mb-6">
+                    <h3 className="font-semibold text-white">Feedback from User 1:</h3>
                     <p>{selectedConnection?.feedbackByUser1}</p>
 
-                    <h3 className="font-semibold text-gray-800 mt-4">Feedback from User 2:</h3>
+                    <h3 className="font-semibold text-white mt-4">Feedback from User 2:</h3>
                     <p>{selectedConnection?.feedbackByUser2}</p>
                   </div>
                 )}
@@ -582,7 +582,7 @@ const ChatPage = () => {
                   {/* Feedback Modal (only show if feedback hasn't been given yet) */}
                   {isFeedbackModalOpen && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-blue-400 via-blue-300 to-blue-200 bg-opacity-10 backdrop-blur-sm">
-                      <div className="w-[90%] max-w-md bg-gradient-to-br from-blue-400 via-blue-500 to-blue-700 text-white p-8 rounded-2xl shadow-2xl">
+                      <div className="w-[90%] max-w-md bg-slate-900/80 backdrop-blur-2xl border border-white/20 text-white p-8 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]">
                         <button
                           onClick={closeFeedbackModal}
                           className="absolute top-3 right-4 text-blue-600 text-2xl hover:text-gray-200 transition"
@@ -626,7 +626,7 @@ const ChatPage = () => {
                 {/* Schedule Modal */}
                 {isScheduleModalOpen && (
                   <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-blue-400 via-blue-300 to-blue-200 bg-opacity-10 backdrop-blur-sm">
-                    <div className="w-[90%] max-w-md bg-gradient-to-br from-blue-400 via-blue-500 to-blue-700 text-white p-8 rounded-2xl shadow-2xl">
+                    <div className="w-[90%] max-w-md bg-slate-900/80 backdrop-blur-2xl border border-white/20 text-white p-8 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]">
                       <h2 className="text-2xl font-bold mb-5 text-center">Schedule Your Next Meeting</h2>
 
                       <div className="flex flex-col gap-4">
@@ -672,7 +672,7 @@ const ChatPage = () => {
                 {/* Report Modal */}
                 {isReportModalOpen && (
                   <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-blue-400 via-blue-300 to-blue-200 bg-opacity-10 backdrop-blur-sm">
-                    <div className="w-[90%] max-w-md bg-gradient-to-br from-blue-400 via-blue-500 to-blue-700 text-white p-8 rounded-2xl shadow-2xl">
+                    <div className="w-[90%] max-w-md bg-slate-900/80 backdrop-blur-2xl border border-white/20 text-white p-8 rounded-2xl shadow-[0_8px_32px_0_rgba(0,0,0,0.5)]">
                       <button
                         onClick={closeReportModal}
                         className="absolute top-3 right-4 text-blue-600 text-2xl hover:text-gray-200 transition"
